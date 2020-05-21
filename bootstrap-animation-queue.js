@@ -35,7 +35,7 @@ $(document).ready(() => {
   }
 
   function animateAndQueueNextChild(currentElements,animationIndex) {
-    
+      let found = false;
       $.each(currentElements, (currentElementIndex, currentElement) => {
         let classArray = [];
         console.log(`nextElement[${currentElementIndex}]`,currentElement);
@@ -43,6 +43,7 @@ $(document).ready(() => {
 
         $.each(classArray, (index, className) => {
           if (className.indexOf(effectClass) > -1) {
+            found = true;
             animationClass = className.substring(effectClass.length, className.length);
             $(currentElement).addClass(animationClass);
           }
@@ -50,7 +51,13 @@ $(document).ready(() => {
 
         // queue next child
         $(currentElement).attr("data-animation-queue-step", animationIndex);
-        $(currentElement).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', animateNextv02Callback);
+        if (found) {
+          $(currentElement).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', animateNextv02Callback);
+        }
+        else {
+          // no animation on this element, start next immediately
+          animateNextv02(currentElement,animationIndex+1);
+        }
       });
   }
 
