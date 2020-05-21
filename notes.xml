@@ -1,0 +1,17 @@
+
+<!-- version 0.1 -->
+<animation-queue-0>
+  <animation-queue-1>
+    <animation-queue-2>
+  <animation-queue-1>
+
+
+<!-- version 0.2 -->
+<animation-queue-parent animation-queue-effect>
+  <animation-queue-child-0 animation-queue-effect>
+    <animation-queue-child-0 animation-queue-effect>
+    <animation-queue-child-1 animation-queue-effect> 
+      <animation-queue-child-0 animation-queue-effect>
+  <animation-queue-child-1 animation-queue-effect>
+  <animation-queue-child-2 animation-queue-effect>
+    <animation-queue-0 animation-queue-effect>
