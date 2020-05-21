@@ -5,13 +5,10 @@ $(document).ready(() => {
 
   function animateNextv02(element, animationIndex) {
     let elementsToAnimate;
+    let childElementsToAnimate;
     // init
     if (animationIndex === -1) {
-
       elementsToAnimate = $(`.${parentClass}`);
-
-      // turn on anim for parents
-      animateAndQueueNextChild(elementsToAnimate,animationIndex);
     }
     else {
       const nextChildClass = `${childClass}${animationIndex}`;
@@ -19,6 +16,8 @@ $(document).ready(() => {
       if (animationIndex > 0) {
         // the the element is the previous child, not the parent
         elementsToAnimate = $(element).siblings(`.${nextChildClass}`);
+        childElementsToAnimate = $(element).children(`.${childClass}0`);
+        console.log(`${animationIndex} child elements: ${childClass}0`,childElementsToAnimate);
       }
       else {
         // element is parent
@@ -26,10 +25,13 @@ $(document).ready(() => {
       }
     }
     animateAndQueueNextChild(elementsToAnimate,animationIndex);
+    if (childElementsToAnimate) animateAndQueueNextChild(childElementsToAnimate,0);
   }
 
   function animateNextv02Callback(event, param) {
-    animateNextv02(event.target, parseInt($(event.target).attr("data-animation-queue-step")) + 1);
+    const step = parseInt($(event.target).attr("data-animation-queue-step")) + 1;
+    $(event.target).removeAttr("data-animation-queue-step");
+    animateNextv02(event.target, step);
   }
 
   function animateAndQueueNextChild(currentElements,animationIndex) {
@@ -42,13 +44,12 @@ $(document).ready(() => {
         $.each(classArray, (index, className) => {
           if (className.indexOf(effectClass) > -1) {
             animationClass = className.substring(effectClass.length, className.length);
-
             $(currentElement).addClass(animationClass);
-            $(currentElement).attr("data-animation-queue-step", animationIndex);
           }
         });
 
         // queue next child
+        $(currentElement).attr("data-animation-queue-step", animationIndex);
         $(currentElement).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', animateNextv02Callback);
       });
   }
