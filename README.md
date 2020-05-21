@@ -7,9 +7,9 @@ As this project is just starting up, you only need to download bootstrap-animati
 
 ## Prerequisites
 
-!(JQuery)[https://jquery.com/download/]
-!(Bootstrap)[https://getbootstrap.com/docs/4.4/getting-started/download/]
-!(MD Bootstrap)[https://mdbootstrap.com/md-bootstrap-cdn/]
+[JQuery](https://jquery.com/download/)
+[Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/download/)
+[MD Bootstrap](https://mdbootstrap.com/md-bootstrap-cdn/)
 
 Include links to the above in the head of your html.
 ```html
