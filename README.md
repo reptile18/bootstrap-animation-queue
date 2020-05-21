@@ -50,7 +50,7 @@ Download bootstrap-animation-queue.js to your project directory and link to it f
 
 ## Running the tests
 
-* More comprehensive documentation to come *
+*More comprehensive documentation to come*
 
 The structure of the html should be something like this:
 
