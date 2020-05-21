@@ -3,7 +3,6 @@ An open source library for queuing up bootstrap animations  to run in series wit
 
 Currently, in order to have animations run one after the other, you have the following choices:
 
----------------
 use MD Bootstrap's built in .delay classes | these are limited to exact delay of 1 second, 2 second, ... 5 seconds, which seems like their use is very limited
 create your own delay classes with more granular delays | this is a fine approach, but you could run into timing issues
 use a bunch of callbacks yourself | this is time consuming
