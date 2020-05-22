@@ -3,6 +3,8 @@ An open source library for queuing up bootstrap animations  to run in series wit
 
 Currently, in order to have animations run one after the other, you have the following choices:
 
+Approach | Details
+------------ | -------------
 use MD Bootstrap's built in .delay classes | these are limited to exact delay of 1 second, 2 second, ... 5 seconds, which seems like their use is very limited
 create your own delay classes with more granular delays | this is a fine approach, but you could run into timing issues
 use a bunch of callbacks yourself | this is time consuming
@@ -70,3 +72,51 @@ The structure of the html should be something like this:
 ```
 
 At each step, every element that needs an animation, needs to have a css class name of animation-queue-effect-{effect} where {effect} is one of the animation classes described on [MD Bootstrap's animation list](https://mdbootstrap.com/docs/jquery/css/animations/).
+
+### Examples
+.bounce
+.flash
+.pulse
+.rubberBand
+.shake
+.headShake
+.swing
+.tada
+.wobble
+.jello
+.jackInTheBox
+.heartBeat
+.bounceIn
+.bounceOut
+.fadeIn
+.fadeOut
+.flipInX
+.flipInY
+.flipOutX
+.flipOutY
+.lightSpeedIn
+.lightSpeedOut
+.rotateIn
+.rotateOut
+.hinge
+.rollIn
+.rollOut
+.zoomIn
+.zoomOut
+.slideInRight
+.slideOutLeft
+
+### Top Level Parent
+Regardless of whether an element has an animation or not, a class of `.animation-queue-parent` is required at the top level element that contains the animating children (so the code knows where to start traversing). 
+
+### Immediate Siblings
+A class of `.animation-queue-child-0` is required at the next step. Classes of `.animation-queue-child-###` are going to allow sibling child nodes of the first child to run their sequentially, one after the other. 
+
+### Deeper Level Children
+Additionally, at any step, child nodes of those children may also contain the `.animation-queue-child-0` to indicate they have animations that will run directy after its immediate parent's animation has completed.
+
+The provided index.html provides a **very** rudimentary example of how the traversing animations work.
+
+## Authors
+* **Johnny Li** - *Initial work* - [reptile18](https://github.com/reptile18)
+ 
