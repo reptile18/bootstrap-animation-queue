@@ -45,6 +45,7 @@ $(document).ready(() => {
           if (className.indexOf(effectClass) > -1) {
             found = true;
             animationClass = className.substring(effectClass.length, className.length);
+            $(currentElement).removeClass("invisible");
             $(currentElement).addClass(animationClass);
           }
         });
